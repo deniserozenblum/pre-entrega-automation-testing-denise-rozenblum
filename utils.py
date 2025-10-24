@@ -1,6 +1,7 @@
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
+from selenium.common.exceptions import TimeoutException
 import time
 
 def login(driver):
@@ -24,16 +25,3 @@ def login(driver):
     WebDriverWait(driver, 10).until(EC.url_contains("inventory.html")
     )
 
-def take_screenshot(driver, filename):
-    """
-    Toma una captura de pantalla y la guarda.
-    
-    Args:
-        driver: Instancia del WebDriver
-        filename: Nombre del archivo donde guardar la captura
-    """
-    try:
-        driver.save_screenshot(f"screenshots/{filename}")
-        print(f"Captura de pantalla guardada como {filename}")
-    except Exception as e:
-        print(f"Error al guardar la captura de pantalla: {e}")
